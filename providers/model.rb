@@ -53,3 +53,7 @@ private
 def cron_name
   "#{new_resource.name}_backup"
 end
+
+def model_path
+  ::File.join(node['backup']['model_path'], "#{new_resource.name}.rb")
+end

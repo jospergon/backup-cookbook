@@ -22,8 +22,7 @@ action :create do
     weekday new_resource.schedule[:weekday] || '*'
   end
 
-  template "Model file for #{new_resource.name}" do
-    path "#{::File.join(node['backup']['model_path'], '#{new_resource.name}.rb')}"
+  template "#{model_path}" do
     source model.erb
     owner node['backup']['user']
     group node['backup']['group']

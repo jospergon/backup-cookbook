@@ -23,7 +23,7 @@ action :create do
   end
 
   template "Model file for #{new_resource.name}" do
-    path model_path
+    path ::File.join(node['backup']['model_path'], "#{new_resource.name}.rb")
     source model.erb
     owner node['backup']['user']
     group node['backup']['group']
@@ -52,8 +52,4 @@ private
 
 def cron_name
   "#{new_resource.name}_backup"
-end
-
-def model_path
-  ::File.join(node['backup']['model_path'], "#{new_resource.name}.rb")
 end

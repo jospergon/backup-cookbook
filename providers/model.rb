@@ -22,8 +22,8 @@ action :create do
     weekday new_resource.schedule[:weekday] || '*'
   end
 
-  template '#{model_path}' do
-    source 'model.erb'
+  template "#{model_path}" do
+    source "model.erb"
     owner node['backup']['user']
     group node['backup']['group']
     mode '0600'
